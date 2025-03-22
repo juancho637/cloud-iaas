@@ -1,0 +1,10 @@
+#cloud-config
+package_update: true
+packages:
+  - docker.io
+
+runcmd:
+  - sleep 30
+  - sudo systemctl start docker
+  - sudo systemctl enable docker
+  - sudo docker run -d -p 80:80 traefik/whoami
